@@ -27,6 +27,7 @@ export const getArticulos = async (req, res) => {
     }
     res.json(rows);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       message: "Problema interno del servidor",
     });
