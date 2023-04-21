@@ -2,8 +2,6 @@ import { pool } from "../db.js";
 
 export const createCliente = async (req, res) => {
   try {
-    console.log("hola");
-    console.log(req.body);
     const nombre = req.body.nombre;
     const identificacion = req.body.identificacion;
     const ciudad = req.body.ciudad;
@@ -24,7 +22,6 @@ export const createCliente = async (req, res) => {
       estado,
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       message: "Problema interno del servidor",
     });
@@ -34,7 +31,6 @@ export const createCliente = async (req, res) => {
 export const getClientes = async (req, res) => {
   try {
     const [rows] = await pool.query("SELECT * FROM clientes");
-    console.log(rows);
     res.json(rows);
   } catch (error) {
     return res.status(500).json({
@@ -87,7 +83,6 @@ export const deleteCliente = async (req, res) => {
     }
     res.sendStatus(204);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       message: "Problema interno del servidor",
     });
