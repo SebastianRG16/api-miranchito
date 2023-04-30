@@ -88,3 +88,15 @@ export const deleteCliente = async (req, res) => {
     });
   }
 };
+
+export const getCantidad = async (req, res) => {
+  try {
+    const [rows] = await pool.query("SELECT COUNT(*) FROM clientes");
+
+    res.send(rows[0]);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Problema interno del servidor",
+    });
+  }
+};

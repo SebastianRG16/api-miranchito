@@ -34,6 +34,18 @@ export const getArticulos = async (req, res) => {
   }
 };
 
+export const getCantidad = async (req, res) => {
+  try {
+    const [rows] = await pool.query("SELECT COUNT(*) FROM productos");
+
+    res.send(rows[0]);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Problema interno del servidor",
+    });
+  }
+};
+
 export const getArticulo = async (req, res) => {
   try {
     const [rows] = await pool.query("SELECT * FROM productos WHERE id = ?", [
