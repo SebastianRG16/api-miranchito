@@ -19,8 +19,8 @@ export const uploadd = upload.single("image");
 
 export const createArticulos = async (req, res) => {
   try {
-    console.log(req.body);
-    console.log(req.file);
+    // console.log(req.body);
+    // console.log(req.file);
     const name = req.body.name;
     const precio = req.body.precio;
     const cantidad = req.body.cantidad;
